@@ -5,14 +5,12 @@ import pandas as pd
 cluster = Cluster(['localhost'])
 session = cluster.connect()
 
-
 #session.execute("DROP TABLE detran.calls")
 
 # Cria o keyspace e a tabela
 session.execute("CREATE KEYSPACE IF NOT EXISTS detran WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'}")
 
 session.execute("CREATE TABLE IF NOT EXISTS detran.calls (call_id uuid, time text, location text, PRIMARY KEY (call_id))")
-
 
 # # Lê o arquivo CSV e insere os dados na tabela
 # with open('911.csv') as f:
